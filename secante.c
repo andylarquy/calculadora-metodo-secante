@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <math.h>
 
-void valoresIniciales(float *a, float *b, float *epsilon, int *iteraciones);
-float evaluarEn(float x);
-float formula(float n0, float n1);
+void valoresIniciales(double *a, double *b, double *epsilon, int *iteraciones);
+double evaluarEn(double x);
+double formula(double n0, double n1);
 
 int main(){
 
@@ -12,12 +12,12 @@ printf("La funcion elegida es: 3 * sen(x) + 2\n");
 int i;
 int iteraciones;
 
-float a;
-float b;
-float c;//Variable temporal usada para las iteraciones
-float chequeoAltaConvergencia;
+double a;
+double b;
+double c;//Variable temporal usada para las iteraciones
+double chequeoAltaConvergencia;
 
-float epsilon;
+double epsilon;
 
 valoresIniciales(&a,&b,&epsilon,&iteraciones);
 
@@ -25,7 +25,7 @@ valoresIniciales(&a,&b,&epsilon,&iteraciones);
 
 
 c = formula(a,b);
-printf("x1 = %.15f\n",c);
+printf("x1 = %.15lf\n",c);
 
 
 
@@ -40,7 +40,7 @@ for(i = 0; i < iteraciones /*|| error(c) < epsilon*/; i++){
 
 
 
-    printf("x%d = %.15f\n",i+2,c);
+    printf("x%d = %.15lf\n",i+2,c);
 
 
     a = b;
@@ -57,9 +57,9 @@ for(i = 0; i < iteraciones /*|| error(c) < epsilon*/; i++){
 }
 
 
-float formula(float n0, float n1){
+double formula(double n0, double n1){
 
-    float temp;
+    double temp;
     temp = n1 - ((n1-n0) * evaluarEn(n1) ) / (evaluarEn(n1)-evaluarEn(n0)); //Formula con pequeña simplificacion
 
     return temp;
@@ -67,9 +67,9 @@ float formula(float n0, float n1){
 
 }
 
-float evaluarEn(float x){
+double evaluarEn(double x){
 
-float temp;
+double temp;
 temp = (3 * sin(x)) + 2;
 
 return temp;
@@ -79,16 +79,16 @@ return temp;
 
 
 
-void valoresIniciales(float *a, float *b, float *epsilon, int *iteraciones){
+void valoresIniciales(double *a, double *b, double *epsilon, int *iteraciones){
 
 printf("Ingrese un numero real A:\n");
-scanf("%f",a);
+scanf("%lf",a);
 
 printf("Ingrese un numero real B:\n");
-scanf("%f",b);
+scanf("%lf",b);
 
 printf("Ingrese un Epsilon:\n");
-scanf("%f",epsilon);
+scanf("%lf",epsilon);
 
 printf("Ingrese la cantidad maxima de iteraciones:");
 scanf("%d",iteraciones);
