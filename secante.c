@@ -25,7 +25,7 @@ valoresIniciales(&a,&b,&epsilon,&iteraciones);
 
 
 c = formula(a,b);
-printf("x1 = %.15lf\n",c);
+printf("x2.15lf\n",c);
 
 
 
@@ -40,7 +40,7 @@ for(i = 0; i < iteraciones /*|| error(c) < epsilon*/; i++){
 
 
 
-    printf("x%d = %.15lf\n",i+2,c);
+    printf("x%d = %.15lf\n",i+3,c);
 
 
     a = b;
