@@ -15,6 +15,8 @@ int iteraciones;
 double a;
 double b;
 double c;//Variable temporal usada para las iteraciones
+double chequeoAltaConvergencia;
+
 double epsilon;
 
 valoresIniciales(&a,&b,&epsilon,&iteraciones);
@@ -22,13 +24,36 @@ valoresIniciales(&a,&b,&epsilon,&iteraciones);
 c = formula(a,b);
 printf("x1 = %lf\n",c);
 
+if (abs(evaluarEn(a)) < abs(evaluarEn(b))){
+    double aux = a;
+    a = b;
+    b = aux;
+}
+
+a = c;
 
 //TODO - Calcular el error
 for(i = 0; i < iteraciones /*|| error(c) < epsilon*/; i++){
 
+    chequeoAltaConvergencia = c;
     c = formula(a,b);
 
+
+
     printf("x%d = %lf\n",i+2,c);
+
+    if (abs(evaluarEn(a)) < abs(evaluarEn(b))){
+        double aux = a;
+        a = b;
+        b = aux;
+    }
+
+    a = c;
+
+    if(chequeoAltaConvergencia == c){
+        printf("Hay una alta convergencia en x = %lf",c);
+        i = iteraciones; //Ya no es necessario seguir iterando
+    }
 
 
     //chequeo el caso y piso la variable a o b con la informacion de c segun corresponda
