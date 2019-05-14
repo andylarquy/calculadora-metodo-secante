@@ -21,16 +21,16 @@ float epsilon;
 
 valoresIniciales(&a,&b,&epsilon,&iteraciones);
 
+//Se acomodan los inputs de mayor a menor
+
+
 c = formula(a,b);
 printf("x1 = %.15f\n",c);
 
-if (abs(evaluarEn(a)) < abs(evaluarEn(b))){
-    float aux = a;
-    a = b;
-    b = aux;
-}
 
-a = c;
+
+a = b;
+b = c;
 
 //TODO - Calcular el error
 for(i = 0; i < iteraciones /*|| error(c) < epsilon*/; i++){
@@ -42,13 +42,9 @@ for(i = 0; i < iteraciones /*|| error(c) < epsilon*/; i++){
 
     printf("x%d = %.15f\n",i+2,c);
 
-    if (abs(evaluarEn(a)) < abs(evaluarEn(b))){
-        float aux = a;
-        a = b;
-        b = aux;
-    }
 
-    a = c;
+    a = b;
+    b = c;
 
     if(chequeoAltaConvergencia == c){
         printf("Hay una alta convergencia en x = %.15f",c);
@@ -64,7 +60,7 @@ for(i = 0; i < iteraciones /*|| error(c) < epsilon*/; i++){
 float formula(float n0, float n1){
 
     float temp;
-    temp = n1 - ((n1-n0)/(evaluarEn(n1)-evaluarEn(n0))) * evaluarEn(n1);
+    temp = n1 - ((n1-n0) * evaluarEn(n1) ) / (evaluarEn(n1)-evaluarEn(n0)); //Formula con pequeña simplificacion
 
     return temp;
 
@@ -74,7 +70,7 @@ float formula(float n0, float n1){
 float evaluarEn(float x){
 
 float temp;
-temp = 3 * sin(x) + 2;
+temp = (3 * sin(x)) + 2;
 
 return temp;
 }
