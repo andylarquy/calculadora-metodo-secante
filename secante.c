@@ -56,11 +56,7 @@ for(i = 0; i < iteraciones /*|| error(c) < epsilon*/; i++){
     }
 
 
-    //chequeo el caso y piso la variable a o b con la informacion de c segun corresponda
-
-    //TODO - Chequear si ya encontre la solucion
-
-    }
+}
 
 }
 
