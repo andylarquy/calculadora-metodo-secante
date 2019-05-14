@@ -30,7 +30,7 @@ if (abs(evaluarEn(a)) < abs(evaluarEn(b))){
     b = aux;
 }
 
-a| = c;
+a = c;
 
 //TODO - Calcular el error
 for(i = 0; i < iteraciones /*|| error(c) < epsilon*/; i++){
