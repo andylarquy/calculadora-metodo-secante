@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <math.h>
 
-void valoresIniciales(double *a, double *b, double *epsilon, int *iteraciones);
-double evaluarEn(double x);
-double formula(double n0, double n1);
+void valoresIniciales(float *a, float *b, float *epsilon, int *iteraciones);
+float evaluarEn(float x);
+float formula(float n0, float n1);
 
 int main(){
 
@@ -12,25 +12,25 @@ printf("La funcion elegida es: 3 * sen(x) + 2\n");
 int i;
 int iteraciones;
 
-double a;
-double b;
-double c;//Variable temporal usada para las iteraciones
-double chequeoAltaConvergencia;
+float a;
+float b;
+float c;//Variable temporal usada para las iteraciones
+float chequeoAltaConvergencia;
 
-double epsilon;
+float epsilon;
 
 valoresIniciales(&a,&b,&epsilon,&iteraciones);
 
 c = formula(a,b);
-printf("x1 = %lf\n",c);
+printf("x1 = %.15f\n",c);
 
 if (abs(evaluarEn(a)) < abs(evaluarEn(b))){
-    double aux = a;
+    float aux = a;
     a = b;
     b = aux;
 }
 
-a = c;
+a| = c;
 
 //TODO - Calcular el error
 for(i = 0; i < iteraciones /*|| error(c) < epsilon*/; i++){
@@ -40,10 +40,10 @@ for(i = 0; i < iteraciones /*|| error(c) < epsilon*/; i++){
 
 
 
-    printf("x%d = %lf\n",i+2,c);
+    printf("x%d = %.15f\n",i+2,c);
 
     if (abs(evaluarEn(a)) < abs(evaluarEn(b))){
-        double aux = a;
+        float aux = a;
         a = b;
         b = aux;
     }
@@ -51,7 +51,7 @@ for(i = 0; i < iteraciones /*|| error(c) < epsilon*/; i++){
     a = c;
 
     if(chequeoAltaConvergencia == c){
-        printf("Hay una alta convergencia en x = %lf",c);
+        printf("Hay una alta convergencia en x = %.15f",c);
         i = iteraciones; //Ya no es necessario seguir iterando
     }
 
@@ -61,9 +61,9 @@ for(i = 0; i < iteraciones /*|| error(c) < epsilon*/; i++){
 }
 
 
-double formula(double n0, double n1){
+float formula(float n0, float n1){
 
-    double temp;
+    float temp;
     temp = n1 - ((n1-n0)/(evaluarEn(n1)-evaluarEn(n0))) * evaluarEn(n1);
 
     return temp;
@@ -71,9 +71,9 @@ double formula(double n0, double n1){
 
 }
 
-double evaluarEn(double x){
+float evaluarEn(float x){
 
-double temp;
+float temp;
 temp = 3 * sin(x) + 2;
 
 return temp;
@@ -83,16 +83,16 @@ return temp;
 
 
 
-void valoresIniciales(double *a, double *b, double *epsilon, int *iteraciones){
+void valoresIniciales(float *a, float *b, float *epsilon, int *iteraciones){
 
 printf("Ingrese un numero real A:\n");
-scanf("%lf",a);
+scanf("%f",a);
 
 printf("Ingrese un numero real B:\n");
-scanf("%lf",b);
+scanf("%f",b);
 
 printf("Ingrese un Epsilon:\n");
-scanf("%lf",epsilon);
+scanf("%f",epsilon);
 
 printf("Ingrese la cantidad maxima de iteraciones:");
 scanf("%d",iteraciones);
