@@ -19,11 +19,17 @@ double epsilon;
 
 valoresIniciales(&a,&b,&epsilon,&iteraciones);
 
+c = formula(a,b);
+printf("x1 = %lf\n",c);
+
 
 //TODO - Calcular el error
-for(i = 0; i < iteraciones || error(c) < epsilon; i++){
+for(i = 0; i < iteraciones /*|| error(c) < epsilon*/; i++){
 
     c = formula(a,b);
+
+    printf("x%d = %lf\n",i+2,c);
+
 
     //chequeo el caso y piso la variable a o b con la informacion de c segun corresponda
 
@@ -36,10 +42,10 @@ for(i = 0; i < iteraciones || error(c) < epsilon; i++){
 
 double formula(double n0, double n1){
 
-    double temp
-    temp = n1 - ((n1-n0)/(evaluarEn(n1)-evaluarEn(n0))) * evaluarEn(n1)
+    double temp;
+    temp = n1 - ((n1-n0)/(evaluarEn(n1)-evaluarEn(n0))) * evaluarEn(n1);
 
-    return temp
+    return temp;
 
 
 }
