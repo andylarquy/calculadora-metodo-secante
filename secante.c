@@ -42,7 +42,6 @@ for(i = 1; i < iteraciones && error(a,b) > epsilon; i++){
     if(chequeoAltaConvergencia == c){
         printf("Hay una alta convergencia en x = %.15f",c);
         break;
-        //i = iteraciones; //(Break) Ya no es necessario seguir iterando
     }
 
 
