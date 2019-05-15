@@ -4,6 +4,7 @@
 void valoresIniciales(double *a, double *b, double *epsilon, int *iteraciones);
 double evaluarEn(double x);
 double formula(double n0, double n1);
+double error(double x0, double x1);
 
 int main(){
 
@@ -21,34 +22,27 @@ double epsilon;
 
 valoresIniciales(&a,&b,&epsilon,&iteraciones);
 
-//Se acomodan los inputs de mayor a menor
-
-
 c = formula(a,b);
-printf("x2.15lf\n",c);
-
-
+printf("\nx2 %.15lf\n dif: %.15lf\n\n",c,error(c,b));
 
 a = b;
 b = c;
 
-//TODO - Calcular el error
-for(i = 0; i < iteraciones /*|| error(c) < epsilon*/; i++){
+for(i = 1; i < iteraciones && error(a,b) > epsilon; i++){
 
     chequeoAltaConvergencia = c;
     c = formula(a,b);
 
-
-
-    printf("x%d = %.15lf\n",i+3,c);
-
+    printf("\nx%d = %.15lf\n dif: %.15lf\n\n",i+2,c,error(c,b));
 
     a = b;
     b = c;
 
+
     if(chequeoAltaConvergencia == c){
         printf("Hay una alta convergencia en x = %.15f",c);
-        i = iteraciones; //Ya no es necessario seguir iterando
+        break;
+        //i = iteraciones; //(Break) Ya no es necessario seguir iterando
     }
 
 
@@ -76,6 +70,10 @@ return temp;
 }
 
 
+double error(double x0, double x1){
+    return fabs(x1 - x0);
+}
+
 
 
 
@@ -93,5 +91,5 @@ scanf("%lf",epsilon);
 printf("Ingrese la cantidad maxima de iteraciones:");
 scanf("%d",iteraciones);
 
+printf("\n");
 }
-
