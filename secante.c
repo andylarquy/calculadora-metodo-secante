@@ -81,8 +81,12 @@ void valoresIniciales(double *a, double *b, double *epsilon, int *iteraciones){
 printf("Ingrese un numero real A:\n");
 scanf("%lf",a);
 
-printf("Ingrese un numero real B:\n");
-scanf("%lf",b);
+//Este bucle evita que A y B sean iguales
+do{
+    printf("Ingrese un numero real B:\n");
+    scanf("%lf",b);
+}while(*a == *b);
+
 
 printf("Ingrese un Epsilon:\n");
 scanf("%lf",epsilon);
