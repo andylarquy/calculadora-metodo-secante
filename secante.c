@@ -22,13 +22,7 @@ double epsilon;
 
 valoresIniciales(&a,&b,&epsilon,&iteraciones);
 
-c = formula(a,b);
-printf("\nx2 %.15lf\n dif: %.15lf\n\n",c,error(c,b));
-
-a = b;
-b = c;
-
-for(i = 1; i < iteraciones && error(a,b) > epsilon; i++){
+for(i = 0; i < iteraciones && error(a,b) > epsilon; i++){
 
     chequeoAltaConvergencia = c;
     c = formula(a,b);
@@ -53,7 +47,7 @@ for(i = 1; i < iteraciones && error(a,b) > epsilon; i++){
 double formula(double n0, double n1){
 
     double temp;
-    double fx0 = evaluarEn(n0)
+    double fx0 = evaluarEn(n0);
     double fx1 = evaluarEn(n1);
     temp = n1 - ((n1 - n0) * fx1 ) / (fx1 - fx0); //Formula con pequeña simplificacion
 
