@@ -15,8 +15,8 @@ int iteraciones;
 
 double a;
 double b;
-double c;//Variable temporal usada para las iteraciones
-double chequeoAltaConvergencia;
+double c;//Variable temporal usada para las iteraciones, almacena el resultado de la nueva aproximacion
+double chequeoConvergenciaFuerte;
 
 double epsilon;
 
@@ -24,7 +24,7 @@ valoresIniciales(&a,&b,&epsilon,&iteraciones);
 
 for(i = 0; i < iteraciones && error(a,b) > epsilon; i++){
 
-    chequeoAltaConvergencia = c;
+    chequeoConvergenciaFuerte = c;
     c = formula(a,b);
 
     printf("\nx%d = %.15lf\n dif: %.15lf\n\n",i+2,c,error(c,b));
@@ -33,8 +33,8 @@ for(i = 0; i < iteraciones && error(a,b) > epsilon; i++){
     b = c;
 
 
-    if(chequeoAltaConvergencia == c){
-        printf("Hay una alta convergencia en x = %.15f",c);
+    if(chequeoConvergenciaFuerte == c){
+        printf("La funcion presenta una convergencia fuerte en x = %.15f",c);
         break;
     }
 
@@ -49,7 +49,7 @@ double formula(double n0, double n1){
     double temp;
     double fx0 = evaluarEn(n0);
     double fx1 = evaluarEn(n1);
-    temp = n1 - ((n1 - n0) * fx1 ) / (fx1 - fx0); //Formula con pequeña simplificacion
+    temp = n1 - ((n1 - n0) * fx1 ) / (fx1 - fx0);
 
     return temp;
 
@@ -77,7 +77,8 @@ void valoresIniciales(double *a, double *b, double *epsilon, int *iteraciones){
 printf("Ingrese un numero real A:\n");
 scanf("%lf",a);
 
-//Este bucle evita que A y B sean iguales
+
+//Este bucle evita que A y B sean iguales, condicion inicial necesaria pues se requieren dos puntos distintos
 do{
     printf("Ingrese un numero real B:\n");
     scanf("%lf",b);
