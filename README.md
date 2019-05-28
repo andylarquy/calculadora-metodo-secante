@@ -9,6 +9,37 @@ Metodo de Secante: https://planetcalc.com/3707/
 
 Metodo de Newton (por las dudas): https://planetcalc.com/7748/
 
+
+
+## Lo que creo que es una corrida capturada:
+
+```
+La funcion elegida es: 3 * sen(x) + 2
+Ingrese un numero real A:
+-1
+Ingrese un numero real B:
+1
+Ingrese un Epsilon:
+0.001    
+Ingrese la cantidad maxima de iteraciones:10
+
+
+x2 = -0.792263403852081
+ dif: 1.792263403852081
+
+
+x3 = -0.740023761553709
+ dif: 0.052239642298372
+
+
+x4 = -0.729421808271673
+ dif: 0.010601953282036
+
+
+x5 = -0.729729076120963
+ dif: 0.000307267849291
+```
+
 ## Entrega
 Hasta el lunes 24/6, por e-mail.
 
