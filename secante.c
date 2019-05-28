@@ -53,7 +53,9 @@ for(i = 1; i < iteraciones && error(a,b) > epsilon; i++){
 double formula(double n0, double n1){
 
     double temp;
-    temp = n1 - ((n1-n0) * evaluarEn(n1) ) / (evaluarEn(n1)-evaluarEn(n0)); //Formula con pequeña simplificacion
+    double fx0 = evaluarEn(n0)
+    double fx1 = evaluarEn(n1);
+    temp = n1 - ((n1 - n0) * fx1 ) / (fx1 - fx0); //Formula con pequeña simplificacion
 
     return temp;
 
