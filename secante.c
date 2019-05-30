@@ -16,7 +16,6 @@ int iteraciones;
 double a;
 double b;
 double c;//Variable temporal usada para las iteraciones, almacena el resultado de la nueva aproximacion
-double chequeoConvergenciaFuerte;
 
 double epsilon;
 
@@ -24,8 +23,12 @@ valoresIniciales(&a,&b,&epsilon,&iteraciones);
 
 for(i = 0; i < iteraciones && error(a,b) > epsilon; i++){
 
-    chequeoConvergenciaFuerte = c;
     c = formula(a,b);
+
+    if(error(c,b) == 0){
+        printf("La funcion presenta una convergencia fuerte en x = %.15f",c);
+        break;
+    }
 
     printf("\nx%d = %.15lf\n dif: %.15lf\n\n",i+2,c,error(c,b));
 
@@ -33,10 +36,7 @@ for(i = 0; i < iteraciones && error(a,b) > epsilon; i++){
     b = c;
 
 
-    if(chequeoConvergenciaFuerte == c){
-        printf("La funcion presenta una convergencia fuerte en x = %.15f",c);
-        break;
-    }
+
 
 
 }
